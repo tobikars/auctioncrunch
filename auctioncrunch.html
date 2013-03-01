@@ -1,0 +1,101 @@
+<head>
+  <title>Welcome to auctioncrunch.</title>
+</head>
+
+<body>
+  {{loginButtons}}
+  {{> intro}}
+  {{> sites}}
+  {{> regions}}
+  {{> reloadbutton}}
+  {{> titlesearch}}
+  {{> toolbar}}
+  {{> auctions}}  
+<div class="footer">
+  copyright 2013 <span class="sep">//</span> Themeda Technologies <span class="sep">//</span> contact us <a href="mailto:tobikars@gmail.com">tobikars@gmail.com</a>
+  <!--  
+    Sites loaded:
+    http://www.the-saleroom.com/en-gb
+    http://www.raremaps.com/
+
+    To be done: 
+    http://www.liveauctioneers.com/ 
+    http://www.artfact.com/
+    http://www.swaen.com/index.php
+    http://www.geographicus.com/
+    http://www.leejacksonmaps.com/index.htm
+    http://www.helmink.com/
+  -->
+</div>  
+</body>
+
+<template name="intro">
+  <div id="intro">
+    <h1>Welcome to AuctionCrunch!</h1>
+    <p>
+    AuctionCrunch helps collectors to stay up to date with what is offered on the biggest auction-sites, all through one simple account.
+    <a href="/register">Register now</a> with AuctionCrunch and you will receive an email whenever new items have been added to your favorite websites.
+  </p>
+  <input type="button" id="registerButton" value="Register"/>
+  </div>
+</template>
+
+<template name="usersearch">
+  <div class="usersearch">
+    Active User: <input type="text" size="20" id="activeUser" value="{{activeUser}}" /><input type="button" value="Filter" />
+  </div>
+</template>
+
+<template name="titlesearch">
+<div>
+  Only show maps made before <select><option val="all">this year</option>
+  <option val="500">1900</option>
+  <option val="1000">1800</option>
+  <option val="1700">1700</option>
+  <option val="1600">1600</option>
+  <option val="1500">1500</option>
+  <option val="1400">1400</option>
+</select>
+  and a price below <select>
+  <option val="all">unlimited</option>
+  <option val="100">$ 100</option>
+  <option val="500">$ 500</option>
+  <option val="1000">$ 1,000</option>
+  <option val="100">$ 5,000</option>
+  <option val="100">$ 10,000</option>
+</select>
+</div>
+  <div class="titlesearch">
+    Show maps  
+    <select><option val="or">containing any of the words</option>
+      <option val="and">containing all of the words</option>
+      <option val="and-exact">containing the exact phrase</option>
+    </select> <input type="text" size="30" id="titleSearch" value="{{titleSearch}}" /> 
+    and 
+    <select><option val="or">containing any of the words</option>
+      <option val="and">containing all of the words</option>
+      <option val="and-exact">containing the exact phrase</option>
+    </select> <input type="text" size="30" id="titleSearch" value="{{titleSearch}}" /> 
+    <input type="button" value="Filter" />
+  </div>
+</template>
+
+<template name="toolbar">
+  <div class="toolbar">
+    <p class="resultscount">Found <strong>{{auctionsCount}}</strong> results {{{query}}} 
+      {{pageListStart}}
+      {{#each pageList}}
+        {{> pagelink }}
+      {{/each}}
+      {{morepages}}
+    </p>
+  </div>
+</template>
+
+<template name="pagelink">
+        <span id="{{this}}" class="pagelink{{isActivePage}}{{isVisible}}">{{this}}</span>
+</template>
+
+<template name="reloadbutton">
+        <span class="reloadbutton">[reload all auctions from file]</span>
+</template>

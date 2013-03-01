@@ -1,0 +1,15 @@
+<template name="sites">
+	<div>Auction Houses: ({{auctionHousesCount}}) <span class="showAuctionhouses">[show]</span></div>
+	<div class="scrapedSites">
+		<ul>
+		{{#each scrapedSites}}
+	      {{> site}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="site">
+		<li class="scrapedSite"><input type="checkbox" name='{{_id}}' value='{{_id}}'> {{name}} ({{auctionCount}} maps) <a href='{{url}}' target="_new">view site</a></li>
+</template>
+
