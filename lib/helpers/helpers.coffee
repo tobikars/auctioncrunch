@@ -70,37 +70,13 @@ currency = (text) ->
 detectYear = (text) ->
   return parseInt text.match(/[1-9][0-9]{2,3}/)
 
-class filter
-  _u : ""
-  _s : ""
-    
-  setUserString : (user) ->
-    @_u = user
-    @buildFilter()
-
-  setSearchString : (search) ->
-    @_s = search
-    @buildFilter()
-
-  buildFilter : ->
-    if @_u and @_s 
-      list = @_s.toUpperCase().split " "
-      return { $and: [{user: @_u}, {keywords: {$in: list}}] }
-    if @_u
-      return {user: @_u}
-    return {}
-
-  constructor: (user, search) ->
-    @_u = user
-    @_s = search
-
-showHide = (el, t) ->
+showHide = (el, target) ->
   deb el.html() 
   if el.html() is "[show]"
     deb "showing"
-    t.show()
+    target.show()
     el.html "[hide]"
   else
     deb "hiding" 
-    t.hide()
+    target.hide()
     el.html "[show]"

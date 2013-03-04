@@ -1,0 +1,22 @@
+[{"auctionDate":"",
+"auctionHouse": {
+    "URL":"http://www.raremaps.com",
+    "country":"US",
+    "name":"Barry Lawrence Ruderman Antique Maps Inc."
+},
+"dateTime":1361813051080,
+"description":"Text",
+"detailsURL":"http://www.raremaps.com/gallery/detail/29174/Das_ander_alter_der_Werlt/Schedel.html",
+"estimateAmountHigh":"$22,500.00",
+"estimateAmountLow":"$22,500.00",
+"estimateCurrency":"USD",
+"image":"http://www.raremaps.com/maps//small/29174.jpg",
+"maker":"Schedel",
+"placeDate":"1493",
+"region":"Maps of the World",
+"scrapedURL":"http://www.raremaps.com/gallery/browse/category/World/World",
+"sellType":"sale",
+"title":"Das ander alter der Werlt",
+"user":"tobi"},
+....
+]

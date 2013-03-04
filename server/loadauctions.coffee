@@ -37,10 +37,11 @@ loadauctions = (clear) ->
     "THEN"
     "THAN"
     "WITH"
+    "WHAT"
     "AND"
     "BEFORE"
     "AFTER"
-    "THEN"
+    "THERE"
   ]
 
   insertFile = (rawFile) ->
@@ -52,8 +53,11 @@ loadauctions = (clear) ->
         parsedAuctions = JSON.parse data
         deb "PROCESSING:#{rawFile.filename} for #{rawFile.username}: #{parsedAuctions.length} records detected." 
         Fiber () -> 
-          md5Codes = []
-          ahList = [] # array to keep auctionHouses to prevent double entry (async)
+          md5Codes = [] # hashcode per auction to prevent double entries
+          # array to keep auctionHouses to prevent double entry (async)
+          ahList = [] 
+          regionList = [] 
+          makerList = []
           Auctions.find({}).forEach (a) ->
             md5Codes.push a.md5
           newAuctionCount = 0;
@@ -68,15 +72,27 @@ loadauctions = (clear) ->
               if a.md5 not in md5Codes
                 do (a) ->
                   newAuctionCount++
+
+                  m = Makers.findOne {"name": a.maker}
+                  if m
+                    Makers.update m._id, {$set: { "auctionCount":  m.auctionCount + 1}}
+                  else 
+                    if a.maker not in makerList
+                      makerList.push a.maker
+                      Makers.insert 
+                        "name": a.maker,
+                        "auctionCount": 1
+
                   # check if the region exist, if so, update the count if not, add the region
-                  
                   r = Regions.findOne {"name": a.region}
                   if r
                     Regions.update r._id, {$set: { "auctionCount":  r.auctionCount + 1}}
                   else 
-                    Regions.insert 
-                      "name": a.region,
-                      "auctionCount": 1
+                    if a.region not in regionList
+                      regionList.push a.region
+                      Regions.insert 
+                        "name": a.region,
+                        "auctionCount": 1
 
                   ah = AuctionHouses.findOne {"name": a.auctionHouse.name}
                   if ah

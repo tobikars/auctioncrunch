@@ -9,4 +9,4 @@ root.Template.regions.regionCount = ->
   Regions.find().count()
 
 root.Template.regions.events = "click span.hideRegions": ->
-  showHide $("span.hideRegions"), $("#regionList")
+  showHide $("span.hideRegions"), $(".regionList")

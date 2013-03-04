@@ -4,9 +4,6 @@ body {
   font-size: 12px;
 }
 
-.info {
-}
-
 .resultspages {
   font-size: 12px;
   line-height: 12px;
@@ -70,6 +67,6 @@ body {
 
 .sep {color: red;}
 
-.regionList, .scrapedSites {
+.regionList, .scrapedSites, .makers {
   display: none;
 }

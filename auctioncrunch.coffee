@@ -7,6 +7,7 @@ loadauctionsFlag = false # set loadauctions to true if you want to urge DB data 
 Auctions = new Meteor.Collection "auctions" 
 Regions =  new Meteor.Collection "regions"
 AuctionHouses =  new Meteor.Collection "auctionhouses"
+Makers = new Meteor.Collection "makers"
 UserSearches =  new Meteor.Collection "usersearches"
 
 Meteor.startup ->
@@ -18,17 +19,31 @@ Meteor.startup ->
     else
       deb "not loading new auction files." 
 
-    Meteor.publish 'auctions-by-user', (userString, page, pageSize, searchText) ->
-      searchText = searchText or ""
-      f = new filter(userString, searchText)
-      deb "reloading for: " + userString + " searchwords:" + searchText.split(" ")
+    Meteor.publish 'auctions-by-user', (opts) ->
+      page = opts.page or 1
+      pageSize = opts.pagesize or 10
+      f = new Filter({ 
+        user: opts.user
+        search1: opts.search1
+        op1: opts.op1
+        search2: opts.search2
+        op2: opts.op2 
+        price: opts.price 
+        year: opts.year 
+      })
       res = Auctions.find f.buildFilter(),
         sort:
           dateTime: 0
         limit: pageSize
         skip: ( (page-1) * pageSize)
-      deb "filtering on user #{userString}, query #{searchText} on page #{page} for results #{pageSize}"
+      deb "found: " + res.count() + " results."
       return res
+
+    Meteor.publish 'makers', () ->
+      Makers.find {},
+        sort:
+          name: 1 
+        limit: 100   
 
     Meteor.publish 'auctionhouses', () ->
       AuctionHouses.find {},
@@ -47,11 +62,16 @@ Meteor.startup ->
     Session.set "page", 1   
     Session.set "pageSize", 10   
     Session.set "pages", 0
-    Session.set "searchText", ""   
-    deb "Subscribing to collections."
+    Session.set "searchTextA", ""
+    Session.set "searchTextB", ""
+    Session.set "searchOpA", ""
+    Session.set "searchOpB", ""
+    Session.set "searchYear", 2100 
+    Session.set "searchPrice", 99999999 
+    deb "Subscribing to collections....."
     Meteor.autosubscribe ->
-      Meteor.subscribe "auctions-by-user", (Session.get "activeUser"), (Session.get "page"), (Session.get "pageSize"), (Session.get "searchText"), () ->
-        deb "auctions loaded." 
+      fj = getFilterJSON();
+      Meteor.subscribe "auctions-by-user", fj, () -> deb "auctions loaded." 
 
     Meteor.autosubscribe ->
       Meteor.subscribe "auctionhouses", () ->
@@ -62,7 +82,11 @@ Meteor.startup ->
         deb "regions loaded." 
 
     Meteor.autosubscribe ->
-      Meteor.call 'getAuctionCount', (Session.get 'activeUser'), (Session.get 'searchText'), (err, count) ->
+      Meteor.subscribe "makers", () ->
+        deb "makers loaded." 
+
+    Meteor.autosubscribe ->
+      Meteor.call 'getAuctionCount', getFilter(), (err, count) ->
         Session.set 'auctionsCount', count
         Session.set 'pages', (Math.ceil count / Session.get "pageSize")
 
@@ -73,25 +97,15 @@ Meteor.startup ->
     
 # client section
 if root.Meteor.is_client
-  
-  root.Template.usersearch.activeUser = ->
-    Session.get "activeUser" 
-    
-  root.Template.titlesearch.titleSearch = ->
-    Session.get "titleSearch"    
-  
+     
   root.Template.toolbar.auctionsCount = ->
     Session.get "auctionsCount"
 
-  root.Template.toolbar.activeUser = ->
-    Session.get "activeUser"
-    
   root.Template.toolbar.activePage = ->
     Session.get "page" 
 
   root.Template.toolbar.query = ->
-    if Session.get "searchText"
-      return "for query <strong>'#{Session.get "searchText"}'</strong>"  
+    res = "for query <strong>'#{Session.get "searchTextA"} / #{Session.get "searchTextB"}'</strong>"
   
   root.Template.toolbar.pageList = ->
     res = []   
@@ -115,20 +129,9 @@ if root.Meteor.is_client
     return " invisible" if +(this) >= vis          
     return ""
 
-  root.Template.usersearch.events = "click input:button": ->
-    u = $("#activeUser").val()
-    Session.set "activeUser", u
-    deb "activeUser: #{u}"
-
   root.Template.reloadbutton.events = "click span.reloadbutton": ->
     Meteor.call 'reloadAuctions', true, (err, data) ->
       deb "reloaded auctions: " + data  
-  
-  root.Template.titlesearch.events = "click input:button": ->
-    s = $("#titleSearch").val()
-    Session.set "searchText", s
-    Session.set "page",1
-    deb "searchText: #{s}"
   
   root.Template.toolbar.events = "click span.pagelink": (event) ->
     Session.set "page", +$(event.target).attr("id")
@@ -139,10 +142,9 @@ if root.Meteor.is_client
 if root.Meteor.is_server
   deb "Defining methods on the server."
   Meteor.methods
-    getAuctionCount: (u, s) ->
-      f = new filter(u,s)
-      c = Auctions.find(f.buildFilter()).count()
-      deb "counting for: " + u + " search: " + s + " found: " + c 
+    getAuctionCount: (f) ->
+      c = Auctions.find(f).count()
+      deb "counting auctions, found: " + c 
       return c
     reloadAuctions: (clear) ->
       loadauctions clear

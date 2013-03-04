@@ -9,4 +9,4 @@ root.Template.sites.auctionHousesCount = ->
   AuctionHouses.find().count()
 
 root.Template.sites.events = "click span.showAuctionhouses": ->
-  showHide $("span.showAuctionhouses"), $("#scrapedSites")
+  showHide $("span.showAuctionhouses"), $(".scrapedSites")

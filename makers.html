@@ -1,0 +1,14 @@
+<template name="makers">
+	<div>Makers: ({{makersCount}}) <span class="showMakers">[show]</span></div>
+	<div class="makers">
+		<ul>
+		{{#each makersList}}
+	      {{> maker}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="maker">
+		<li class="maker"><input type="checkbox" name='{{_id}}' value='{{_id}}'> {{name}} ({{auctionCount}} maps)</li>
+</template>
