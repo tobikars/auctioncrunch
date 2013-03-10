@@ -7,5 +7,7 @@ insecure
 preserve-inputs
 coffeescript
 jquery
-accounts-ui
 backbone
+bootstrap
+accounts-ui-unstyled
+accounts-password

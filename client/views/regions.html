@@ -1,0 +1,15 @@
+<template name="regions">
+	<div>Regions <span class="badge badge-info">{{regionCount}}</span> <span class="hideRegions">[show]</span></div> 
+	<div class="regionList">
+		<ul>
+		{{#each regionList}}
+	      {{> region}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="region">
+		<li class="region"><input type="checkbox" name='{{_id}}' value='{{_id}}'>{{name}} ({{auctionCount}} maps)</li>
+</template>
+

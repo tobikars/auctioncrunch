@@ -1,5 +1,5 @@
 <template name="titlesearch">
-<div class="titlesearch">
+<div class="titlesearch well well-small">
   <div>
     Only show maps made before <select id="year" name="year">
       <option value="2100">this year</option>
@@ -28,7 +28,10 @@
     <select id="searchOpB" name="searchOpB"><option value="OR">containing any of the words</option>
       <option value="AND">containing all of the words</option>
     </select> <input type="text" size="30" id="searchTextB" value="{{searchTextB}}" /> 
-    <input type="button" value="Filter" />
+    <div class="btn-group">
+      <input type="button" class="btn" value="Filter" />
+      <input type="button" class="btn" value="Reset" />
+    </div>  
   </div>
 </div>
 </template>

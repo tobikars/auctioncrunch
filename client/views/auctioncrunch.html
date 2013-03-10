@@ -1,0 +1,52 @@
+<head>
+  <title>Welcome to auctioncrunch.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+</head>
+
+<body>
+<div class="container-narrow">
+  {{> masthead}}
+  <hr>
+  {{> intro}}
+  <hr>
+  {{> marketing}}
+  <hr>
+  {{> sites}}
+  {{> regions}}
+  {{> makers}}
+  {{> reloadbutton}}
+  {{> titlesearch}}
+  {{> searchresults}}
+  {{> auctions}}  
+  <hr>
+  <div class="footer">
+    copyright 2013 <span class="sep">//</span> Themeda Technologies <span class="sep">//</span> contact us <a href="mailto:tobikars@gmail.com">tobikars@gmail.com</a>
+  </div>
+  <!--  
+    Sites loaded:
+    http://www.the-saleroom.com/en-gb
+    http://www.raremaps.com/
+
+    To be done: 
+    http://www.liveauctioneers.com/ 
+    http://www.artfact.com/
+    http://www.swaen.com/index.php
+    http://www.geographicus.com/
+    http://www.leejacksonmaps.com/index.htm
+    http://www.helmink.com/
+  -->
+</div><!-- container-narrow -->  
+</body>
+
+<template name="intro">
+<div class="jumbotron">
+  <h1>track all your favorite map-sites!</h1>
+  <p>
+    AuctionCrunch helps collectors to stay up to date with what is offered on the biggest auction-sites, all through one simple account.
+  </p>
+  <input type="button" class="btn" id="registerButton" value="Register now!"/>
+</div>
+</template>
+

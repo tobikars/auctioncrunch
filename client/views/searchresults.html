@@ -1,0 +1,18 @@
+<template name="searchresults">
+  <div class="searchresults">
+    <span class="label ">Found {{auctionsCount}} results {{{query}}} </span> 
+      {{pageListStart}}
+      <div class="pagination pagination-small"><ul>
+      {{#each pageList}}
+        {{> pagelink }}
+      {{/each}}
+      </ul></div>
+      {{morepages}}
+  </div>
+</template>
+
+<template name="pagelink">
+        <li><a href="" class="pagelink{{isActivePage}}" id="{{this}}">{{this}}</a></li>
+</template>
+
+

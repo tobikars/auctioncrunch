@@ -1,0 +1,30 @@
+<template name="auctions">
+<div id="auctionList">
+    {{#each auctionList}}
+      {{> auction}}
+    {{/each}}
+</div>
+</template>
+
+<template name="auction">
+  <div class="media">
+   <a class="pull-left" href="{{detailsURL}}"><img class="media-object thumbnail" src="{{image}}"/></a>
+    <div class="media-body">
+    	<h4 class="media-heading">{{auctionHouse.name}}</h4>
+    	<a href="{{detailsURL}}"><span class="auctiontitle">{{title}}</span></a><br> 
+      <span class="description">{{description}}</span>
+      <br/>
+   		{{{priceInfo}}} {{makerInfo}} {{mapID}}
+    </div> 
+  </div>
+</template>
+
+<template name="auctionOLD">
+  <div class="auction well well-small"> 
+    <p class="info"><a href="{{detailsURL}}"><img class="thumbnail" src="{{image}}"/><a>
+      <a href="{{detailsURL}}">{{auctionHouse.name}}</a><br/>
+      <span class="auctiontitle">{{title}}</span></br> <span class="description">{{description}}</span> <br/>
+      {{{priceInfo}}} {{makerInfo}} {{mapID}}
+    </p> 
+  </div>
+</template>

@@ -64,14 +64,15 @@ Meteor.startup ->
     Session.set "pages", 0
     Session.set "searchTextA", ""
     Session.set "searchTextB", ""
-    Session.set "searchOpA", ""
-    Session.set "searchOpB", ""
+    Session.set "searchOpA", "or"
+    Session.set "searchOpB", "or"
     Session.set "searchYear", 2100 
     Session.set "searchPrice", 99999999 
     deb "Subscribing to collections....."
     Meteor.autosubscribe ->
       fj = getFilterJSON();
-      Meteor.subscribe "auctions-by-user", fj, () -> deb "auctions loaded." 
+      Meteor.subscribe "auctions-by-user", fj, () -> 
+        deb "auctions loaded."
 
     Meteor.autosubscribe ->
       Meteor.subscribe "auctionhouses", () ->
@@ -90,54 +91,10 @@ Meteor.startup ->
         Session.set 'auctionsCount', count
         Session.set 'pages', (Math.ceil count / Session.get "pageSize")
 
-
     deb "client startup done."
 
 # startup done. Execute the below: 
-    
-# client section
-if root.Meteor.is_client
-     
-  root.Template.toolbar.auctionsCount = ->
-    Session.get "auctionsCount"
 
-  root.Template.toolbar.activePage = ->
-    Session.get "page" 
-
-  root.Template.toolbar.query = ->
-    res = "for query <strong>'#{Session.get "searchTextA"} / #{Session.get "searchTextB"}'</strong>"
-  
-  root.Template.toolbar.pageList = ->
-    res = []   
-    pcount = Session.get "pages"
-    res.push i for i in [1..pcount] by 1
-    deb "pages: " + res.length
-    return res
-
-  root.Template.toolbar.pageListStart = ->
-    return ", pages: " if +(Session.get "pages") 
-
-  root.Template.toolbar.morepages = ->
-    return "....." if +(Session.get "page") < +(Session.get "pages") and +(Session.get "pages") > 20
-
-  root.Template.pagelink.isActivePage = () ->
-    return " active" if +(this) is Session.get "page"
-    return ""
-
-  root.Template.pagelink.isVisible = () ->
-    vis = +(Session.get "page") + 20
-    return " invisible" if +(this) >= vis          
-    return ""
-
-  root.Template.reloadbutton.events = "click span.reloadbutton": ->
-    Meteor.call 'reloadAuctions', true, (err, data) ->
-      deb "reloaded auctions: " + data  
-  
-  root.Template.toolbar.events = "click span.pagelink": (event) ->
-    Session.set "page", +$(event.target).attr("id")
-    #$.find(".pagelink .active").removeClass("active").$(event.target).addClass "active"
-    deb "activepage: " + Session.get "page"
-    
 # server section    
 if root.Meteor.is_server
   deb "Defining methods on the server."
@@ -146,8 +103,8 @@ if root.Meteor.is_server
       c = Auctions.find(f).count()
       deb "counting auctions, found: " + c 
       return c
-    reloadAuctions: (clear) ->
-      loadauctions clear
+    reloadAuctions: (clearFlag) ->
+      loadauctions clearFlag
 
 
 

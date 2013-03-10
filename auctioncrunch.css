@@ -1,7 +1,23 @@
 /* CSS declarations go here */
 body {
-  font-family: sans-serif;
-  font-size: 12px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
 }
 
 .resultspages {
@@ -9,31 +25,6 @@ body {
   line-height: 12px;
 }
 
-.pagelink  {
-  display: inline-block;
-  border: solid 1px white;
-  color: white;
-  background-color: black;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-
-.invisible {
-  display: none;
-}
-
-.active,  .pagelink:hover {
-  font-weight: bold;
-  cursor: pointer;
-  background: #FFFF5A;
-  color: black;
-  border: solid 1px black; 
-}
-
-.pagelink :hover {
-  color: black;
-}
 
 .resultscount {
   font-style: italic;
@@ -48,12 +39,15 @@ body {
 
 .auction {
   clear: both; 
-  border-top: solid 1px black; 
 }
 
 .auctiontitle {
   font-size: 15px;
   font-weight: bold;
+}
+
+.active {
+  font-style: bold;
 }
 
 .footer {
