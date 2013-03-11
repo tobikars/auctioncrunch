@@ -1,22 +1,40 @@
 <template name="auctions">
+{{#each auctionRows}}
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      {{#each this}}
+        {{> auction}}
+      {{/each}}
+    </ul>
+  </div>
+{{/each}}
+</template>
+
+<template name="auction">
+  <li class="span2">
+    <div class="thumbnail">
+      <a href="{{detailsURL}}"><img class="mapthumbnail" src="{{image}}"/></a>
+      <div class="caption">
+      	<p class="auctionhousename">{{auctionHouse.name}}</p>
+      	<p class="auctiontitle">{{title}}</p> 
+        <p class="description text-center">{{mapDescription}}</p>
+        <p class="makerinfo text-center">{{makerInfo}}</p>
+     		<p class="text-center">{{{priceInfo}}} {{> morebutton}}</p>
+      </div> 
+    </div>
+  </li>
+</template>
+
+<template name="morebutton">
+  <a href="{{this.detailsURL}}" class="btn btn-mini pull-right"><i class="icon-hand-right"></i> more</a> 
+</template>
+
+<template name="auctionsOLD">
 <div id="auctionList">
     {{#each auctionList}}
       {{> auction}}
     {{/each}}
 </div>
-</template>
-
-<template name="auction">
-  <div class="media">
-   <a class="pull-left" href="{{detailsURL}}"><img class="media-object thumbnail" src="{{image}}"/></a>
-    <div class="media-body">
-    	<h4 class="media-heading">{{auctionHouse.name}}</h4>
-    	<a href="{{detailsURL}}"><span class="auctiontitle">{{title}}</span></a><br> 
-      <span class="description">{{description}}</span>
-      <br/>
-   		{{{priceInfo}}} {{makerInfo}} {{mapID}}
-    </div> 
-  </div>
 </template>
 
 <template name="auctionOLD">

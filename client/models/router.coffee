@@ -8,7 +8,7 @@ AuctionCrunchRouter = Backbone.Router.extend
   register: (email) -> 
     this.navigate "register/"+email, true
 
-Router = new AuctionCrunchRouter
+#Router = new AuctionCrunchRouter
 
-Meteor.startup ->
-  Backbone.history.start {pushState: true}
+#Meteor.startup ->
+#  Backbone.history.start {pushState: true}

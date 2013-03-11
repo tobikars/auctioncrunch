@@ -72,11 +72,14 @@ detectYear = (text) ->
 
 showHide = (el, target) ->
   deb el.html() 
-  if el.html() is "[show]"
-    deb "showing"
+  showHTML = '<i class="icon-circle-arrow-down"></i>'
+  hideHTML = '<i class="icon-circle-arrow-up"></i>'
+    
+  if el.html() is showHTML
+    deb "showing" + el.html()
     target.show()
-    el.html "[hide]"
+    el.html hideHTML
   else
     deb "hiding" 
     target.hide()
-    el.html "[show]"
+    el.html showHTML

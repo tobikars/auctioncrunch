@@ -5,11 +5,16 @@ root.Template.titlesearch.searchTextB = ->
   Session.get "searchTextB"   
 
 root.Template.titlesearch.events = 
-  "click input:button": () ->
+  "click .search": () ->
     setSearch()
+    return false
+  "click .reset": () ->
+    $('#searchform')[0].reset()
+    return false
   "keyup": (e) ->
     if e.which is 13
       setSearch()
+      return false
 
 setSearch = () ->
   Session.set "searchTextA", $("#searchTextA").val()

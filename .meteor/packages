@@ -8,6 +8,6 @@ preserve-inputs
 coffeescript
 jquery
 backbone
-bootstrap
 accounts-ui-unstyled
 accounts-password
+bootstrap

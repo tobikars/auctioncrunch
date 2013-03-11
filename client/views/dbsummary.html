@@ -1,0 +1,60 @@
+<template name="dbsummary">
+<div class="dbsummary well well-small">
+  {{> sites}}
+  {{> regions}}
+  {{> makers}}
+  {{> reloadbutton}}
+</div>
+</template>
+
+<template name="sites">
+	<span id="sites"><span class="badge badge-info">{{auctionHousesCount}} auction Houses <span class="showAuctionhouses"><i class="icon-circle-arrow-down"></i></span></span> </span>
+	<div class="scrapedSites">
+		<ul>
+		{{#each scrapedSites}}
+	      {{> site}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="site">
+		<li class="scrapedSite"><input type="checkbox" name='{{_id}}' value='{{_id}}'> {{name}} ({{auctionCount}} maps) <a href='{{url}}' target="_new">view site</a></li>
+</template>
+
+
+<template name="regions">
+	<span id="regions"><span class="badge badge-info">{{regionCount}} regions <span class="hideRegions"><i class="icon-circle-arrow-down"></i></span></span></span> 
+	<div class="regionList">
+		<ul>
+		{{#each regionList}}
+	      {{> region}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="region">
+		<li class="region"><input type="checkbox" name='{{_id}}' value='{{_id}}'>{{name}} ({{auctionCount}} maps)</li>
+</template>
+
+
+<template name="makers">
+	<span id="makers"><span class="badge badge-info">{{makersCount}} makers (max. 100) <span class="showMakers"><i class="icon-circle-arrow-down"></i></span></span></span>
+	<div class="makers">
+		<ul>
+		{{#each makersList}}
+	      {{> maker}}
+	    {{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="maker">
+		<li class="maker"><input type="checkbox" name='{{_id}}' value='{{_id}}'> {{name}} ({{auctionCount}} maps)</li>
+</template>
+
+
+<template name="reloadbutton">
+        <a class="btn btn-mini reloadbutton" href=""><i class="icon-repeat"></i> reload all auctions from file</a>
+</template>

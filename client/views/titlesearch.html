@@ -1,5 +1,7 @@
 <template name="titlesearch">
+
 <div class="titlesearch well well-small">
+  <form id="searchform">
   <div>
     Only show maps made before <select id="year" name="year">
       <option value="2100">this year</option>
@@ -20,18 +22,21 @@
     </select>
   </div>
   <div>
-    Show maps  
-    <select id="searchOpA" name="searchOpA"><option value="OR">containing any of the words</option>
-      <option value="AND">containing all of the words</option>
+    Show maps containing 
+    <select id="searchOpA" name="searchOpA">
+      <option value="OR">any of the words</option>
+      <option value="AND">all of the words</option>
     </select> <input type="text" size="30" id="searchTextA" value="{{searchTextA}}" /> 
-    and 
-    <select id="searchOpB" name="searchOpB"><option value="OR">containing any of the words</option>
-      <option value="AND">containing all of the words</option>
+    and containing
+    <select id="searchOpB" name="searchOpB">
+      <option value="OR">any of the words</option>
+      <option value="AND">all of the words</option>
     </select> <input type="text" size="30" id="searchTextB" value="{{searchTextB}}" /> 
     <div class="btn-group">
-      <input type="button" class="btn" value="Filter" />
-      <input type="button" class="btn" value="Reset" />
+      <a href="#" class="btn search"><i class="icon-filter"></i> Filter</a>
+      <a href="#" class="btn reset"><i class="icon-refresh"></i> Reset</a>
     </div>  
   </div>
+  </form>
 </div>
 </template>

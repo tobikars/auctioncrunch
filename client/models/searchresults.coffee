@@ -11,7 +11,7 @@ root.Template.searchresults.pageList = ->
   res = []   
   p = Session.get "page"
   pcount = Session.get "pages"
-  show = p+10 
+  show = p+10
   show = pcount if show > pcount 
   res.push "<<" if pcount > 1
   res.push i for i in [1..show] by 1

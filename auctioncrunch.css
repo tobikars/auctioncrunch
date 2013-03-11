@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 body {
-  padding-top: 20px;
+  padding: 20px;
   padding-bottom: 40px;
 }
 
@@ -10,7 +10,7 @@ body {
   text-align: center;
 }
 
-.jumbotron h1 {
+h1.jumbotron {
   font-size: 72px;
   line-height: 1;
 }
@@ -20,34 +20,40 @@ body {
   padding: 14px 24px;
 }
 
-.resultspages {
-  font-size: 12px;
-  line-height: 12px;
+h4 {
+  vertical-align: -10%;
+  font-size: 21px;
 }
 
+.btn-group {
+  padding-bottom: 10px;
+}
+.resultspages {
+  font-size: 12px;
+}
 
 .resultscount {
   font-style: italic;
 }
 
-.thumbnail {
-  float: left;
-  vertical-align: top;
-  margin-right: 10px;
-  border: solid 1px black;
-}
 
-.auction {
-  clear: both; 
+.mapthumbnail {
+  width: 100px;
 }
 
 .auctiontitle {
-  font-size: 15px;
+  font-size: 11px;
   font-weight: bold;
+  line-height: 12px;
+}
+
+.makerinfo, .auctionhousename {
+  font-size: 9px;
+  line-height: 10px;
 }
 
 .active {
-  font-style: bold;
+  font-weight: bold;
 }
 
 .footer {
@@ -58,8 +64,6 @@ body {
   text-align: center;
   font-size: 10px;
 }
-
-.sep {color: red;}
 
 .regionList, .scrapedSites, .makers {
   display: none;
