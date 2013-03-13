@@ -36,6 +36,6 @@ root.Template.regions.regionCount = ->
 root.Template.regions.events = "click span.hideRegions": ->
   showHide $("span.hideRegions"), $(".regionList")
 
-root.Template.reloadbutton.events = "click span.reloadbutton": ->
+root.Template.reloadbutton.events = "click .reloadbutton": ->
   Meteor.call 'reloadAuctions', true, (err, data) ->
     deb "reloaded auctions: " + data  

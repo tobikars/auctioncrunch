@@ -30,10 +30,9 @@ class Filter
     @_s2OP = opts.op2 if opts.op2
     @_year = {mapYear:{$lt: opts.year }} if opts.year 
     @_price = {estimateAmountLow:{$lt: opts.price }} if opts.price
-    deb "req:" + JSON.stringify(@buildFilter())
+    #deb "req:" + JSON.stringify(@buildFilter())
 
 getFilter = () ->
-  deb "getFilter!"
   return new Filter({
     user: (Session.get "activeUser"),
     search1: (Session.get "searchTextA"),
@@ -47,7 +46,6 @@ getFilter = () ->
   }).buildFilter()
 
 getFilterJSON = () ->
-  deb "getFilterJSON"
   return {
     user: (Session.get "activeUser"),
     search1: (Session.get "searchTextA"),

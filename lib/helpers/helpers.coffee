@@ -54,8 +54,6 @@ detectCurrency = (text) ->
   return "GBP" if 1+text.indexOf "\u00a3"
   return "ZAR" if 1+text.indexOf "ZAR"
   return "MXN" if 1+text.indexOf "MXN"
-  
-  
   return "UNKNOWN"
 
 currency = (text) ->
@@ -71,15 +69,18 @@ detectYear = (text) ->
   return parseInt text.match(/[1-9][0-9]{2,3}/)
 
 showHide = (el, target) ->
-  deb el.html() 
-  showHTML = '<i class="icon-circle-arrow-down"></i>'
-  hideHTML = '<i class="icon-circle-arrow-up"></i>'
-    
-  if el.html() is showHTML
-    deb "showing" + el.html()
+  #showHTML = '<i class="icon-circle-arrow-down"></i>'
+  #hideHTML = '<i class="icon-circle-arrow-up"></i>'
+  showHTML = "down"
+  hideHTML = "up"
+  res = el.html()
+  if res.indexOf(showHTML) > -1
+    deb "showing " + el.html()
+    res = el.html().replace showHTML, hideHTML
+    deb "showing " + el.html()
     target.show()
-    el.html hideHTML
   else
-    deb "hiding" 
+    deb "hiding " + res
     target.hide()
-    el.html showHTML
+    res = el.html().replace hideHTML, showHTML
+  el.html(res)

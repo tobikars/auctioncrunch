@@ -11,12 +11,13 @@ root.Template.searchresults.pageList = ->
   res = []   
   p = Session.get "page"
   pcount = Session.get "pages"
-  show = p+10
-  show = pcount if show > pcount 
+  p1 = p-10
+  p1 = 1 if p1<1
+  p2 = p+10
+  p2 = pcount if p2 > pcount 
   res.push "<<" if pcount > 1
-  res.push i for i in [1..show] by 1
+  res.push i for i in [p1..p2] by 1
   res.push ">>" if pcount > 1
-  deb "pages: " + res.length
   return res
 
 root.Template.searchresults.pageListStart = ->
@@ -24,11 +25,6 @@ root.Template.searchresults.pageListStart = ->
 
 root.Template.pagelink.isActivePage = () ->
   return " active" if +(this) is Session.get "page"
-
-root.Template.pagelink.isVisible = () ->
-  vis = +(Session.get "page") + 10
-  return " invisible" if +(this) >= vis          
-  return ""
 
 root.Template.searchresults.events = "click .pagelink": (event) ->
   p = Session.get "page"

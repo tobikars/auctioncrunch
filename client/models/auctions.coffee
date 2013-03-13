@@ -6,16 +6,12 @@ root.Template.auctions.auctionRows = ->
   ar = []
   row = []
   i = 1 
-  deb "===here: " + list.count()
   list.forEach (r) ->
-    deb "======= i: " + i 
     row.push r
     if i++ % 5 is 0
       ar.push row 
-      deb "row " + row.length
       row = []  
   ar.push row if row.length 
-  deb "ar: " + ar.length
   return ar
 
 root.Template.auctions.auctionList = ->

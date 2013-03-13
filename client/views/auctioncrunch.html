@@ -5,21 +5,52 @@
   <meta name="author" content="">
 </head>
 
-<body>
+<body>  
 <div class="container-narrow">
   {{> masthead}}
-  <hr>
+  {{> main}}
+  {{> footer}}
+</div><!-- container-narrow -->  
+</body>
+
+<!-- default page; placeholder to the router-helper "renderPage" -->
+<template name="main">
+  {{renderPage}}
+</template>
+
+<!-- index page -->
+<template name="indexview">  
   {{> intro}}
-  <hr>
   {{> marketing}}
+  {{> registermodal}}
+</template>
+
+<!-- search page -->
+<template name="searchview">  
   {{> titlesearch}}
   {{> searchresults}}
   {{> auctions}}  
   {{> searchresults}}
-  
+  {{> registermodal}}
   {{> dbsummary}}
+</template>
+
+<!-- repeating in every page: header (masthead) and footer -->
+<template name="masthead">
+  <div class="masthead">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="home"><i class="icon-home"></i>Home</a></li>
+      <li><a href="search"><i class="icon-eye-open"></i>Search</a></li>
+      <li><a href="about"><i class="icon-asterisk"></i>About</a></li>
+      <li><a href="contact"><i class="icon-comment"></i>Contact</a></li>
+    </ul>
+    <h3 class="muted">Got maps?</h3>
+  </div>
+</template>
+
+<template name="footer">
   <div class="footer">
-    copyright 2013 <span class="sep">//</span> Themeda Technologies <span class="sep">//</span> contact us <a href="mailto:tobikars@gmail.com">tobikars@gmail.com</a>
+    copyright 2013 <span class="sep">//</span> Themeda China Technologies <span class="sep">//</span> <a href="mailto:auctioncrunch@gmail.com">auctioncrunch@gmail.com</a>
   </div>
   <!--  
     Sites loaded:
@@ -34,16 +65,12 @@
     http://www.leejacksonmaps.com/index.htm
     http://www.helmink.com/
   -->
-</div><!-- container-narrow -->  
-</body>
-
-<template name="intro">
-<div class="jumbotron">
-  <h1>tracks all your favorite antique map-sites.</h1>
-  <p>
-    AuctionCrunch helps collectors to stay up to date with what is offered on the biggest antique map reseller and auction-sites, all through one simple account.
-  </p>
-  <a class="btn btn-large btn-danger" href="#"><i class="icon-flag icon-2x pull-left"></i>Register <br/>NOW!</a>
-</div>
 </template>
 
+<template name="aboutview">
+  <h1>ABOUT</h1>
+</template>
+
+<template name="contactview">
+  <h1>CONTACT</h1>
+</template>

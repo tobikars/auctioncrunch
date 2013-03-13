@@ -90,10 +90,17 @@ Meteor.startup ->
       Meteor.call 'getAuctionCount', getFilter(), (err, count) ->
         Session.set 'auctionsCount', count
         Session.set 'pages', (Math.ceil count / Session.get "pageSize")
+        
+    # start the router
+    Backbone.history.start {pushState: true}
 
-    deb "client startup done."
-
-# startup done. Execute the below: 
+if root.Meteor.is_client
+  root.Template.masthead.events = "click li": (e)->
+    #deb "clicked:" + event.currentTarget.html()
+    deb "clicked MASTHEAD!!!!!" + $(e.currentTarget).html()
+    e.preventDefault()
+    target = $(e.currentTarget).find("a").attr("href")
+    Router.navigate target,true
 
 # server section    
 if root.Meteor.is_server
@@ -105,6 +112,3 @@ if root.Meteor.is_server
       return c
     reloadAuctions: (clearFlag) ->
       loadauctions clearFlag
-
-
-

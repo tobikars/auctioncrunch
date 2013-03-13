@@ -1,5 +1,5 @@
 <template name="titlesearch">
-
+{{{loginMessage}}
 <div class="titlesearch well well-small">
   <form id="searchform">
   <div>
@@ -23,15 +23,19 @@
   </div>
   <div>
     Show maps containing 
+    <div style="display: none;">
     <select id="searchOpA" name="searchOpA">
-      <option value="OR">any of the words</option>
+      <option value="OR" selected>any of the words</option>
       <option value="AND">all of the words</option>
-    </select> <input type="text" size="30" id="searchTextA" value="{{searchTextA}}" /> 
-    and containing
+    </select>
     <select id="searchOpB" name="searchOpB">
-      <option value="OR">any of the words</option>
+      <option value="OR" selected>any of the words</option>
       <option value="AND">all of the words</option>
-    </select> <input type="text" size="30" id="searchTextB" value="{{searchTextB}}" /> 
+    </select> 
+  </div>
+<input type="text" size="30" id="searchTextA" class="search-query" placeholder="any of the words" value="{{searchTextA}}" /> 
+    and 
+     <input type="text" size="30" id="searchTextB" class="search-query" placeholder="any of the words" value="{{searchTextB}}" /> 
     <div class="btn-group">
       <a href="#" class="btn search"><i class="icon-filter"></i> Filter</a>
       <a href="#" class="btn reset"><i class="icon-refresh"></i> Reset</a>

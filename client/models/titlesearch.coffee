@@ -1,3 +1,6 @@
+root.Template.titlesearch.loginMessage = ->
+  return '<div class="alert">you are not logged in yet. <a href="login">login here</a> or <a href="#" data-toggle="modal" data-target="#myModal">register for an account</a></span></div>'
+
 root.Template.titlesearch.searchTextA = ->
   Session.get "searchTextA"
 
