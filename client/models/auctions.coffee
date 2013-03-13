@@ -22,7 +22,13 @@ root.Template.auction.priceInfo = ->
   return "#{currency this.estimateCurrency} #{this.estimateAmountLow}" if (this.estimateAmountLow)
 
 root.Template.auction.makerInfo = ->
-  return "(Made by #{this.maker} est. #{this.placeDate})" if this.maker isnt "UNKNOWN"
+  return "(by #{this.maker} est. #{this.mapYear})" if this.maker isnt "UNKNOWN"
+
+root.Template.auction.mapTitle = ->
+  return limitwords(this.title,20)
 
 root.Template.auction.mapDescription = ->
-    return this.description if this.description isnt this.title
+  res = this.description
+  # only return the description if it's different from the title
+  if this.description isnt this.title
+    return limitwords(res,40)

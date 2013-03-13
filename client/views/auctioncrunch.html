@@ -5,12 +5,14 @@
   <meta name="author" content="">
 </head>
 
-<body>  
-<div class="container-narrow">
-  {{> masthead}}
-  {{> main}}
-  {{> footer}}
-</div><!-- container-narrow -->  
+<body> 
+<div class="wrap"> 
+  <div class="main container-narrow clear-top">
+    {{> masthead}}
+    {{> main}}
+  </div><!-- container-narrow -->
+  {{> footer}}  
+</div><!-- wrap -->
 </body>
 
 <!-- default page; placeholder to the router-helper "renderPage" -->
@@ -49,9 +51,9 @@
 </template>
 
 <template name="footer">
-  <div class="footer">
-    copyright 2013 <span class="sep">//</span> Themeda China Technologies <span class="sep">//</span> <a href="mailto:auctioncrunch@gmail.com">auctioncrunch@gmail.com</a>
-  </div>
+  <footer class="footer">
+    copyright 2013 <i class="icon-star sep"></i> Themeda China Technologies
+  </footer>
   <!--  
     Sites loaded:
     http://www.the-saleroom.com/en-gb
@@ -65,12 +67,4 @@
     http://www.leejacksonmaps.com/index.htm
     http://www.helmink.com/
   -->
-</template>
-
-<template name="aboutview">
-  <h1>ABOUT</h1>
-</template>
-
-<template name="contactview">
-  <h1>CONTACT</h1>
 </template>

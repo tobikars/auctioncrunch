@@ -1,12 +1,32 @@
 /* CSS declarations go here */
-body {
-  padding: 20px;
-  padding-bottom: 40px;
+html, body {
+  height:100%;
 }
 
+.wrap {
+  min-height: 100%;
+  position:relative;
+}
+
+.main {
+  overflow:auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom:30px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  position: absolute;
+}
 
 select {
-  width: 150px;
+  width: 100px;
 }
 
 .pagination {
@@ -15,7 +35,7 @@ select {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  margin: 60px 0;
+  margin: 40px 0;
   text-align: center;
 }
 
@@ -46,11 +66,28 @@ h4 {
 
 .mapthumbnail {
   width: 100px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  padding: 5px;
+  height: 250px;
 }
 
 .thumbnail .caption {
-  padding-bottom: 0;
-  padding-left: 3px;
+  padding: 0;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.wrapthumb {
+  height: 225px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.bottomline {
+  height: 25px;
 }
 
 .auctiontitle {
@@ -69,19 +106,25 @@ h4 {
   color: black;
 }
 
-.footer {
-  clear: both; 
-  margin-top: 20px;
-  width: 50%;
-  margin-left: 25%;
-  text-align: center;
-  font-size: 10px;
-}
-
 .regionList, .scrapedSites, .makers {
   display: none;
 }
 
 .sep {
-  color: red;
+  color: #dd4814;
+  font-size: 75%;
+}
+
+.smaller {
+  font-size: 80%;
+}
+
+.huge {
+  font-size: 40px;
+  color: #dd4814;
+}
+
+.massiveicon {
+  font-size: 200px;
+  color: #dd4814;
 }

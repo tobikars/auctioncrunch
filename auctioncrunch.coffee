@@ -68,7 +68,7 @@ Meteor.startup ->
     Session.set "searchOpB", "or"
     Session.set "searchYear", 2100 
     Session.set "searchPrice", 99999999 
-    deb "Subscribing to collections....."
+    deb "subscribing to collections....."
     Meteor.autosubscribe ->
       fj = getFilterJSON();
       Meteor.subscribe "auctions-by-user", fj, () -> 
@@ -97,7 +97,6 @@ Meteor.startup ->
 if root.Meteor.is_client
   root.Template.masthead.events = "click li": (e)->
     #deb "clicked:" + event.currentTarget.html()
-    deb "clicked MASTHEAD!!!!!" + $(e.currentTarget).html()
     e.preventDefault()
     target = $(e.currentTarget).find("a").attr("href")
     Router.navigate target,true

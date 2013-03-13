@@ -13,14 +13,16 @@
 <template name="auction">
   <li class="span2">
     <div class="thumbnail">
-      <a href="{{detailsURL}}"><img class="mapthumbnail" src="{{image}}"/></a>
-      <div class="caption">
-      	<p class="auctionhousename">{{auctionHouse.name}}</p>
-      	<p class="auctiontitle">{{title}}</p> 
-        <p class="description text-center">{{mapDescription}}</p>
-        <p class="makerinfo text-center">{{makerInfo}}</p>
-     		<p class="text-center">{{{priceInfo}}} {{> morebutton}}</p>
-      </div> 
+      <div class="wrapthumb"
+        <a href="{{detailsURL}}"><img class="mapthumbnail" src="{{image}}"/></a>
+        <div class="caption">
+        	<p class="auctionhousename">{{auctionHouse.name}}</p>
+        	<p class="auctiontitle">{{title}}</p> 
+          <p class="description">{{{mapDescription}}}</p>
+          <p class="makerinfo">{{makerInfo}}</p>
+        </div> 
+      </div>
+      <div class="bottomline"><span class="pull-left">{{{priceInfo}}}</span><span class="pull-right">{{> morebutton}}</span></div>
     </div>
   </li>
 </template>

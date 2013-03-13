@@ -68,6 +68,10 @@ currency = (text) ->
 detectYear = (text) ->
   return parseInt text.match(/[1-9][0-9]{2,3}/)
 
+limitwords = (s, wordCount) ->
+  expr = new RegExp("(([^\\s]+\\s+){" + wordCount + "}).+")
+  return s.replace(expr, "$1<span class='viewmore'>...</span>")
+
 showHide = (el, target) ->
   #showHTML = '<i class="icon-circle-arrow-down"></i>'
   #hideHTML = '<i class="icon-circle-arrow-up"></i>'
