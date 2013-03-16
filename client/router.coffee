@@ -19,7 +19,10 @@ AuctionCrunchRouter = Backbone.Router.extend
 
 # the below function is used as the main controller
 root.Template.main.renderPage = ->
-  name = Session.get 'page_id'  
+  name = "index"
+  if (Session.get 'page_id')? 
+    name = Session.get 'page_id'
+
   templateName = name + "view"
   deb "rendering: " + name
   if root.Template[templateName]

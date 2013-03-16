@@ -128,3 +128,9 @@ h4 {
   font-size: 200px;
   color: #dd4814;
 }
+
+.register-spinner {
+  display: none;
+  font-size: 21px;
+  color: #dd4814;
+}

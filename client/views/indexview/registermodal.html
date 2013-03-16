@@ -1,37 +1,67 @@
 <template name="registermodal">
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">AuctionCrunch Registration</h3>
-  </div>
-  <div class="modal-body">
-    <p>Register now and gain unlimited access to all our maps.</p>
-    <form class="form-horizontal">
-      <div class="control-group">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-envelope"></i></span>
-          <input class="span4" id="prependedInput" type="text" placeholder="Your Email">
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+            </button>
+            <h3 id="myModalLabel">
+                AuctionCrunch Registration
+            </h3>
         </div>
-      </div>
-      <div class="control-group">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-key"></i></span>
-          <input class="span4" type="password" placeholder="Set your Password">
+        <div class="modal-body">
+            <p>
+                Register now and gain unlimited access to all price-info, map-details and more.
+            </p>
+            <div class="register-msg"></div>
+            <div class="register-spinner span4">
+              <i class="icon-spinner icon-spin icon-2x pull-left"></i>Registration in progress, please wait!
+            </div>
+            <form class="form-horizontal registerForm">
+              <div class="control-group">
+                  <div class="input-prepend">
+                      <span class="add-on">
+                          <i class="icon-envelope">
+                          </i>
+                      </span>
+                      <input class="span4" id="email" type="text" placeholder="Your Email">
+                  </div>
+              </div>
+              <div class="control-group">
+                  <div class="input-prepend">
+                      <span class="add-on">
+                          <i class="icon-key">
+                          </i>
+                      </span>
+                      <input class="span4" id="password1" type="password" placeholder="Set your Password">
+                  </div>
+              </div>
+              <div class="control-group register-group">
+                  <div class="input-prepend">
+                      <span class="add-on">
+                          <i class="icon-key">
+                          </i>
+                      </span>
+                      <input class="span4" id="password2" type="password" placeholder="Verify your Password">
+                  </div>
+              </div>
+            </form>
         </div>
-      </div>
-      <div class="control-group">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-key"></i></span>
-          <input class="span4" type="password" placeholder="Verify your Password">
-        </div>
-      </div>
-    </form>
+        <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">
+                    Close
+                </button>
+                <button class="btn btn-primary btn-register">
+                    Register me!
+                </button>
+            </div>
+    </div>
+</template>
+
+<template name="loginB">
+  <div class="accounts-dialog accounts-centered-dialog">
+    Email verified
+    <div class="login-button" id="just-verified-dismiss-button">Dismiss</div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Register me!</button>
-  </div>
-</div>
-{{createModal}}
 </template>

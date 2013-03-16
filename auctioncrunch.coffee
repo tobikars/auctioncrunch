@@ -1,3 +1,9 @@
+#
+# contains all startup and init info for the app.
+# by Tobi Kars
+# tobikars@gmail.com
+#
+
 root = global ? window
 
 loadauctionsFlag = false # set loadauctions to true if you want to urge DB data and load the auctions-files on startup.
