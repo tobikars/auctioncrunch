@@ -4,7 +4,6 @@
   <meta name="description" content="AuctionCrunch - the best way to search antique maps online.">
   <meta name="author" content="AuctionCrunch">
 </head>
-
 <body> 
 <div class="wrap"> 
   <div class="main container-narrow clear-top">
@@ -25,6 +24,11 @@
 <template name="indexview"> 
   {{#if currentUser}}
     {{> premiumview}}
+    <div class="row">
+      <div class="pull-right">
+        {{> paypalform}}     
+      </div> 
+    </div>   
   {{else}}
     {{> intro}}
   {{/if}}

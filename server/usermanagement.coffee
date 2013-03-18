@@ -22,9 +22,9 @@ Meteor.methods
     throw new Meteor.Error(401, "Passwords don't match!") unless options.password2 is password
     throw new Meteor.Error(402, "Password must be longer than 6 characters!") unless password && password.length > 6
     throw new Meteor.Error(501, "Email-address is not valid!" + options.email) unless options.email && validateEmail options.email
-
     id = Accounts.createUser {email: email, password: password}
     deb "created user (#{id}): "  + email
     Accounts.sendVerificationEmail id
-
     return "Success! Please check your inbox for the confirmation-email to log in." 
+  upgradeAccount: (userID, userName) ->
+    deb "upgraded account for: "  + userID + ", name: " + userName 

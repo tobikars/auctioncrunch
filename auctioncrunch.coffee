@@ -117,3 +117,4 @@ if root.Meteor.is_server
       return c
     reloadAuctions: (clearFlag) ->
       loadauctions clearFlag
+   
