@@ -1,46 +1,83 @@
 <template name="titlesearch">
-{{{loginMessage}}
-<div class="titlesearch well well-small">
-  <form id="searchform">
-  <div>
-    Only show maps made before <select id="year" name="year">
-      <option value="2100">this year</option>
-      <option value="1900">1900</option>
-      <option value="1800">1800</option>
-      <option value="1700">1700</option>
-      <option value="1600">1600</option>
-      <option value="1500">1500</option>
-      <option value="1400">1400</option>
-    </select>
-    and a price under <select id="price" name="price">
-      <option value="99999999">unlimited</option>
-      <option value="100">$ 100</option>
-      <option value="500">$ 500</option>
-      <option value="1000">$ 1,000</option>
-      <option value="5000">$ 5,000</option>
-      <option value="10000">$ 10,000</option>
-    </select>
-  </div>
-  <div>
-    Show maps containing 
-    <div style="display: none;">
-    <select id="searchOpA" name="searchOpA">
-      <option value="OR" selected>any of the words</option>
-      <option value="AND">all of the words</option>
-    </select>
-    <select id="searchOpB" name="searchOpB">
-      <option value="OR" selected>any of the words</option>
-      <option value="AND">all of the words</option>
-    </select> 
-  </div>
-<input type="text" size="30" id="searchTextA" class="search-query" placeholder="any of the words" value="{{searchTextA}}" /> 
-    and 
-     <input type="text" size="30" id="searchTextB" class="search-query" placeholder="any of the words" value="{{searchTextB}}" /> 
-    <div class="btn-group">
-      <a href="#" class="btn search"><i class="icon-filter"></i> Filter</a>
-      <a href="#" class="btn reset"><i class="icon-refresh"></i> Reset</a>
-    </div>  
-  </div>
-  </form>
-</div>
+    <div class="titlesearch well well-small">
+        <form id="searchform">
+            <div>
+                Only show maps made before
+                <select id="year" name="year">
+                    <option value="2100">
+                        this year
+                    </option>
+                    <option value="1900">
+                        1900
+                    </option>
+                    <option value="1800">
+                        1800
+                    </option>
+                    <option value="1700">
+                        1700
+                    </option>
+                    <option value="1600">
+                        1600
+                    </option>
+                    <option value="1500">
+                        1500
+                    </option>
+                    <option value="1400">
+                        1400
+                    </option>
+                </select>
+                and a price under
+                <select id="price" name="price">
+                    <option value="99999999">
+                        unlimited
+                    </option>
+                    <option value="100">
+                        $ 100
+                    </option>
+                    <option value="500">
+                        $ 500
+                    </option>
+                    <option value="1000">
+                        $ 1,000
+                    </option>
+                    <option value="5000">
+                        $ 5,000
+                    </option>
+                    <option value="10000">
+                        $ 10,000
+                    </option>
+                </select>
+            </div>
+            <div>
+                Show maps containing
+                <div style="display: none;">
+                    <select id="searchOpA" name="searchOpA">
+                        <option value="OR" selected>
+                            any of the words
+                        </option>
+                        <option value="AND">
+                            all of the words
+                        </option>
+                    </select>
+                    <select id="searchOpB" name="searchOpB">
+                        <option value="OR" selected>
+                            any of the words
+                        </option>
+                        <option value="AND">
+                            all of the words
+                        </option>
+                    </select>
+                </div>
+                <input type="text" size="30" id="searchTextA" class="search-query" placeholder="any of the words"
+                value="{{searchTextA}}" />
+                and
+                <input type="text" size="30" id="searchTextB" class="search-query" placeholder="any of the words"
+                value="{{searchTextB}}" />
+                <div class="btn-group">
+                    <a href="#" class="btn search"><i class="icon-filter"></i> Filter</a>
+                    <a href="#" class="btn reset"><i class="icon-refresh"></i> Reset</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </template>

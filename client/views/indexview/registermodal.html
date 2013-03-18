@@ -1,18 +1,18 @@
 <template name="registermodal">
     <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog"
+    aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                 ×
             </button>
-            <h3 id="myModalLabel">
+            <h3 id="registerModalLabel">
                 AuctionCrunch Registration
             </h3>
         </div>
         <div class="modal-body">
             <p>
-                Register now and gain unlimited access to all price-info, map-details and more.
+                Register now and get access to thousands of high-quality maps.
             </p>
             <div class="register-msg"></div>
             <div class="register-spinner span4">
@@ -34,7 +34,7 @@
                           <i class="icon-key">
                           </i>
                       </span>
-                      <input class="span4" id="password1" type="password" placeholder="Set your Password">
+                      <input class="span4" id="password1" type="password" placeholder="Your Password">
                   </div>
               </div>
               <div class="control-group register-group">
@@ -43,19 +43,19 @@
                           <i class="icon-key">
                           </i>
                       </span>
-                      <input class="span4" id="password2" type="password" placeholder="Verify your Password">
+                      <input class="span4" id="password2" type="password" placeholder="Confirm your Password">
                   </div>
               </div>
             </form>
         </div>
         <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">
-                    Close
-                </button>
-                <button class="btn btn-primary btn-register">
-                    Register me!
-                </button>
-            </div>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">
+              <i class="icon-remove"></i> Close
+          </button>
+          <button class="btn btn-primary btn-register">
+              <i class="icon-ok"></i> Register me!
+          </button>
+       </div>
     </div>
 </template>
 

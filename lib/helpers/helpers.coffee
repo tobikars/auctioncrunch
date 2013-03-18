@@ -89,6 +89,12 @@ showHide = (el, target) ->
     res = el.html().replace hideHTML, showHTML
   el.html(res)
  
+
+#router and user-management helpers
+navSet = (active) ->
+  $(".masthead li.active").each () -> $(this).removeClass("active")
+  $(".masthead li a[href=" + active + "]").parent().addClass("active")
+
 validateEmail = (email) ->
   emailPattern = /// ^ #begin of line
    ([\w.-]+)         #one or more letters, numbers, _ . or -
@@ -98,3 +104,16 @@ validateEmail = (email) ->
    ([a-zA-Z.]{2,6})  #followed by 2 to 6 letters or periods
    $ ///i            #end of line and ignore case
   return email.match emailPattern
+
+# message tag helpers
+errorTag = (target, err) ->
+  $(target).addClass("alert alert-error")
+  $(target).html '<i class="icon-thumbs-down icon-large"></i> ' + err
+
+successTag = (target, msg) ->
+  $(target).removeClass("alert-error").addClass("alert alert-success")
+  $(target).html '<i class="icon-thumbs-up icon-large"></i> ' + msg
+
+browserOK = () ->
+  return parseInt($.browser.version, 10) > 7 if $.browser.msie
+  return true 

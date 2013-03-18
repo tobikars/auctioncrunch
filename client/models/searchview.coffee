@@ -1,5 +1,10 @@
-root.Template.titlesearch.loginMessage = ->
-  return '<div class="alert">you are not logged in yet. <a href="login">login here</a> or <a href="#" data-toggle="modal" data-target="#myModal">register for an account</a></span></div>'
+root.Template.searchview.loginMessage = ->
+  if not Meteor.user()
+    return '<div class="alert alert-warning"><i class="icon-warning-sign"></i> you are not logged in yet. <a href="login">login here</a> or <a href="#" data-toggle="modal" data-target="#registerModal">register for an account</a></span></div>'
+  else 
+    email = Meteor.user()?.emails?[0]?.address
+    if email
+      return "<div class='alert alert-success'><i class='icon-ok'></i> you are logged in as #{email}</div>"
 
 root.Template.titlesearch.searchTextA = ->
   Session.get "searchTextA"

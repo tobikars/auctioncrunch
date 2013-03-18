@@ -1,8 +1,8 @@
 <head>
   <title>Welcome to auctioncrunch.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="AuctionCrunch - the best way to search antique maps online.">
+  <meta name="author" content="AuctionCrunch">
 </head>
 
 <body> 
@@ -11,7 +11,8 @@
     {{> masthead}}
     {{> main}}
   </div><!-- container-narrow -->
-  {{> footer}}  
+  {{> footer}} 
+  {{> registermodal}} 
 </div><!-- wrap -->
 </body>
 
@@ -21,36 +22,30 @@
 </template>
 
 <!-- index page -->
-<template name="indexview">  
-  {{> intro}}
+<template name="indexview"> 
+  {{#if currentUser}}
+    {{> premiumview}}
+  {{else}}
+    {{> intro}}
+  {{/if}}
   {{> marketing}}
-  {{> registermodal}}
 </template>
 
 <!-- search page -->
 <template name="searchview">  
-  {{> titlesearch}}
-  {{> searchresults}}
-  {{> auctions}}  
-  {{> searchresults}}
-  {{> registermodal}}
-  {{> dbsummary}}
+  {{{loginMessage}}
+  {{#if currentUser}}
+    {{> titlesearch}}
+    {{> searchresults}}
+    {{> auctions}}  
+    {{> dbsummary}}
+  {{/if}}    
 </template>
 
-<!-- repeating in every page: header (masthead) and footer -->
-<template name="masthead">
-  <div class="masthead">
-    <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="home"><i class="icon-home"></i>Home</a></li>
-      <li><a href="search"><i class="icon-eye-open"></i>Search</a></li>
-      <li><a href="about"><i class="icon-asterisk"></i>About</a></li>
-      <li><a href="contact"><i class="icon-comment"></i>Contact</a></li>
-    </ul>
-    <h3 class="muted">Got maps?</h3>
-  </div>
-</template>
+
 
 <template name="footer">
+<div style="display: none;"></div>
   <footer class="footer">
     copyright 2013 <i class="icon-star sep"></i> Themeda China Technologies
   </footer>
@@ -67,4 +62,15 @@
     http://www.leejacksonmaps.com/index.htm
     http://www.helmink.com/
   -->
+</template>
+
+
+<!-- show this view to users who have IE lower than version 7: -->
+<template name="sorryview">
+<h1>Sorry</h1>
+<h2>Our apologies, but your browser is too old to work with AuctionCrunch.</h2>
+<hr>
+<p>We recommend you upgrade to <a href="https://www.google.com/intl/en/chrome/browser/">Google Chrome</a>, 
+<a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="http://www.microsoft.com/ie">the latest verion of Internet Explorer</a>
+<hr>
 </template>
