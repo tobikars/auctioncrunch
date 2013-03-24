@@ -13,8 +13,8 @@
 <template name="auction">
   <li class="span2">
     <div class="thumbnail">
-      <div class="wrapthumb"
-        <a href="{{detailsURL}}"><img class="mapthumbnail" src="{{image}}"/></a>
+      <div class="wrapthumb">
+        <a href="{{detailsURL}}" target="_blank"><img class="mapthumbnail" src="{{image}}"/></a>
         <div class="caption">
         	<p class="auctionhousename">{{auctionHouse.name}}</p>
         	<p class="auctiontitle">{{title}}</p> 
@@ -28,7 +28,7 @@
 </template>
 
 <template name="morebutton">
-  <a href="{{this.detailsURL}}" class="btn btn-mini pull-right"><i class="icon-hand-right"></i> more</a> 
+  <a href="{{this.detailsURL}}" target="_blank" class="btn btn-mini pull-right"><i class="icon-hand-right"></i> more</a> 
 </template>
 
 <template name="auctionsOLD">
@@ -37,14 +37,4 @@
       {{> auction}}
     {{/each}}
 </div>
-</template>
-
-<template name="auctionOLD">
-  <div class="auction well well-small"> 
-    <p class="info"><a href="{{detailsURL}}"><img class="thumbnail" src="{{image}}"/><a>
-      <a href="{{detailsURL}}">{{auctionHouse.name}}</a><br/>
-      <span class="auctiontitle">{{title}}</span></br> <span class="description">{{description}}</span> <br/>
-      {{{priceInfo}}} {{makerInfo}} {{mapID}}
-    </p> 
-  </div>
 </template>
