@@ -11,7 +11,9 @@ loadauctions = (clear) ->
   clearAuctionsFlag = clear # set to true to clear all auctions first.
 
   rawAuctionFiles = [
-    {username: "tobi", filename: "data.json"}
+    {username: "www.raremaps.com", filename: "data/www.raremaps.com_details.json"}
+    {username: "www.swaen.com", filename: "data/www.swaen.com_details.json"}
+    {username: "www.the-saleroom.com", filename: "data/www.the-saleroom.com_details.json"}
   ]
 
   md5fields = [
@@ -23,7 +25,7 @@ loadauctions = (clear) ->
     "description" 
     "title"
     "maker"
-    "auctionHouse"
+    "auctionHouse.name"
     "placeDate"
     "region"
   ]

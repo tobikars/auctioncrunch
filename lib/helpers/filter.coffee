@@ -1,5 +1,4 @@
 class Filter
-  _u : ""
   _s1 : ""
   _s1OP : "OR"
   _s2 : ""
@@ -20,10 +19,9 @@ class Filter
       textsearch[1] = {keywords: {$in: list2}} if @_s2OP is "OR"
       textsearch[1] = {keywords: {$all: list2}} if @_s2OP is "AND"
     
-    return { $and: [{user: @_u}, textsearch[0], textsearch[1] , @_year, @_price] }
+    return { $and: [textsearch[0], textsearch[1] , @_year, @_price] }
 
   constructor: ( opts ) ->
-    @_u = opts.user if opts.user
     @_s1 = opts.search1 if opts.search1
     @_s1OP = opts.op1 if opts.op1
     @_s2 = opts.search2 if opts.search2
@@ -34,7 +32,6 @@ class Filter
 
 getFilter = () ->
   return new Filter({
-    user: (Session.get "activeUser"),
     search1: (Session.get "searchTextA"),
     op1: (Session.get "searchOpA"),
     search2: (Session.get "searchTextB"),
@@ -47,7 +44,6 @@ getFilter = () ->
 
 getFilterJSON = () ->
   return {
-    user: (Session.get "activeUser"),
     search1: (Session.get "searchTextA"),
     op1: (Session.get "searchOpA"),
     search2: (Session.get "searchTextB"),

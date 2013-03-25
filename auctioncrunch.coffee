@@ -6,7 +6,7 @@
 
 root = global ? window
 
-loadauctionsFlag = false # set loadauctions to true if you want to urge DB data and load the auctions-files on startup.
+loadauctionsFlag = true # set loadauctionsFlag to true if you want to urge DB data and load the auctions-files on startup.
 
 # The collections we use. 
 # Auctions is too big not to send over the line, so we use paging for that. 
@@ -25,11 +25,10 @@ Meteor.startup ->
     else
       deb "not loading new auction files." 
 
-    Meteor.publish 'auctions-by-user', (opts) ->
+    Meteor.publish 'auctions-by-filter', (opts) ->
       page = opts.page or 1
       pageSize = opts.pagesize or 10
       f = new Filter({ 
-        user: opts.user
         search1: opts.search1
         op1: opts.op1
         search2: opts.search2
@@ -63,7 +62,6 @@ Meteor.startup ->
 
   # Startup Client functions
   if root.Meteor.is_client
-    Session.set "activeUser", "tobi"
     Session.set "auctionsCount", 0
     Session.set "page", 1   
     Session.set "pageSize", 10   
@@ -77,7 +75,7 @@ Meteor.startup ->
     deb "subscribing to collections....."
     Meteor.autosubscribe ->
       fj = getFilterJSON();
-      Meteor.subscribe "auctions-by-user", fj, () -> 
+      Meteor.subscribe "auctions-by-filter", fj, () -> 
         deb "auctions loaded."
 
     Meteor.autosubscribe ->

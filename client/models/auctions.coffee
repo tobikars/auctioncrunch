@@ -1,8 +1,7 @@
 root = global ? window
 
 root.Template.auctions.auctionRows = ->
-  u = Session.get "activeUser"
-  list = Auctions.find {user: u}
+  list = Auctions.find {}
   ar = []
   row = []
   i = 1 
@@ -14,9 +13,9 @@ root.Template.auctions.auctionRows = ->
   ar.push row if row.length 
   return ar
 
-root.Template.auctions.auctionList = ->
-	u = Session.get "activeUser"
-	return Auctions.find {user: u}
+#<root.Template.auctions.auctionList = ->
+#	u = Session.get "activeUser"
+#	return Auctions.find {user: u}
 
 root.Template.auction.priceInfo = ->
   return "#{currency this.estimateCurrency} #{this.estimateAmountLow}" if (this.estimateAmountLow)

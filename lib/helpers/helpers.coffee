@@ -16,12 +16,8 @@ clone = (obj) ->
     newInstance[key] = clone obj[key]
   return newInstance
 
-#debug logger, adds a standard date. Later will log to a file.  
-deb = (l) ->
-  #console.log new Date().format("mm/dd/yy h:MM:ss.l") + ": " + l
- 
 extractKeywords = (fields, auction, blacklist) ->
-  text = (text or "") + auction[field] + " " for field in fields
+  text = (text or "") + eval("auction." +field) + " " for field in fields
   # TODO: include natural library for natural language processing 
   return [] if (not text)
   return text.

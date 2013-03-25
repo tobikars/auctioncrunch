@@ -20,28 +20,39 @@
         </div>
         <form class="form-horizontal loginForm">
             <div class="control-group">
-                <div class="input-prepend">
-                    <span class="add-on">
-                        <i class="icon-envelope">
-                        </i>
-                    </span>
-                    <input class="span4" id="email" type="text" placeholder="Your Login Email">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on">
+                            <i class="icon-envelope">
+                            </i>
+                        </span>
+                        <input class="span3" id="email" type="text" placeholder="Your Login Email">
+                    </div>
                 </div>
             </div>
             <div class="control-group ">
-                <div class="input-prepend">
-                    <span class="add-on">
-                        <i class="icon-key">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on">
+                            <i class="icon-key">
+                            </i>
+                        </span>
+                        <input class="span3" id="password" type="password" placeholder="Your Password">
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary btn-login">
+                        <i class="icon-ok">
                         </i>
-                    </span>
-                    <input class="span4" id="password" type="password" placeholder="Your Password">
+                        Login
+                    </button>
                 </div>
             </div>
         </form>
-        <button class="btn btn-primary btn-login">
-            <i class="icon-ok">
-            </i>
-            Login
-        </button>
     </div>
+    {{test}}
 </template>
